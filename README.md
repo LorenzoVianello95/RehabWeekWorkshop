@@ -8,7 +8,20 @@ Across the workshop we will perform 3 tasks:
 - Task 3: Connect multiple robots (>2) and play with the interaction
 
 ## Before starting: 
-Most of the computers run in  a local network so if you need to search online we suggest to keep the your personal computer close
+- Most of the computers run in  a local network so if you need to search online we suggest to keep the your personal computer close. 
+- All the task will be in python, if you are not familiar with python here a list of helpfull commands:
+  ```python
+    # for cycle has the following notation:
+    # where i is an index that goes from 0 to len(v) where len(v) is the dimension of a vector
+    for i in range(0, len(v)): # both for loop and if operator want : at the end and space in the next line
+      if v[i] == N: # if operator, equal operator in python (==), to access element i of vector v[i]
+          L = v[i] # no ; needed
+    # numpy array:
+    v = np.array([1, 2, 4,3])
+    # to have size of single dimension array
+    v.shape[0]
+  ```
+
 
 ## Start Robot Node 
 
