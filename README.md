@@ -251,7 +251,7 @@ def apply_connection_forces_N_robots(K_int , D_int, pos_v, vel_v, conn_Vector):
 
 This function should return a sum of the forces exerted from each robot having 0 as vector index on our robot 
 
-$$\large ^BF_A = K(\theta_B - \theta_A) + D(\dot{\theta}_B- \dot{\theta}_A)$$
+$$\large ^BF_A = \frac{K}{(\sum_i s_i)^2}(\theta_B - \theta_A) + \frac{D}{\sum_i s_i}(\dot{\theta}_B- \dot{\theta}_A)$$
 
 $$\large F = \sum_i s_i ^iF_A  \text{ with } s_i \in \{0, 1\}$$
 
