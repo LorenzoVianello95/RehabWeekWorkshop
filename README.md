@@ -223,7 +223,14 @@ First of all:
 - **Bring the robot to zero_torque**
 - Close the multi_robot_interaction node by pressing **ctrl+c** on the lower terminal
 
-Go back to Visual Studio and implement the third function:
+Let's suppose that we have the following arrays:
+- Positions of all robots
+- Velocities of all robots
+- Vector describing how the robots are connected
+
+![Interaction Interface](imgs_readme/task3components.png)
+
+Go back to Visual Studio and implement the third function that implement a connection between the robots:
 
 ```python 
 """
