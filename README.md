@@ -271,7 +271,7 @@ When the function is ready save and go back on the terminal and run:
 roslaunch multi_robot_interaction multi_m1_real.launch task:=3
 ```
 On the opening a interactive window should opening with the following graphical interace:
-![Interaction Interface](Task3interface.png)
+![Interaction Interface](imgs_readme/Task3interface.png)
 
 This interface allows to associate your robot (on the left) to as many of the other robots present in the room. 
 To connect your robot to another robot, just click on the robot you want to connect and drag/drop on the first line to the right of your robot name. 
