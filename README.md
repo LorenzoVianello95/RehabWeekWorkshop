@@ -1,15 +1,19 @@
-# multi_robot_interaction
-## Rehab Week 2025 workshop 
-This repo is to create haptic interaction between multi-robot systems in python. 
+# RehabWeek 2025: WS32 
+This repo covers an activity to render haptic forces between multi-robot systems in python. 
+This activity is paired with a rehabilitation game, where the velocity of each single-DoF robot moves one of four paddles on a virtual boat.
 
-Across the workshop we will perform 3 tasks:
-- Task 1: Connect the robot, test transparency, Visualize the task, implement viscous friction.
-- Task 2: Connect your robot to another robot and perceive forces due to the virtual interaction.
-- Task 3: Connect multiple robots (>2) and play with the interaction
+Throughout the workshop we will perform 3 tasks:
+- Task 1: Run the robot, test transparent control, visualize the task, implement viscous friction to simulate underwater forces.
+- Task 2: Virtually connect your robot to another robot and perceive forces due to the haptic interaction.
+- Task 3: Virtually connect more than two robots and play with the interaction parameters.
 
-## Before starting: 
-- Most of the computers run in  a local network so if you need to search online we suggest to keep the your personal computer close. 
-- All the task will be in python, if you are not familiar with python here a list of helpfull commands:
+
+## Notes before starting: 
+Most of the computers run on a local network, so if you need to search online we suggest that you use your personal computer.
+
+## Python Instructions
+
+All the task will be in python, if you are not familiar with python here a list of helpfull commands:
   ```python
     # for cycle has the following notation:
     # where i is an index that goes from 0 to len(v) where len(v) is the dimension of a vector
@@ -30,8 +34,8 @@ Understand you team name:
 IMPORTANT: Don't confuse it with other names.**
 
 Run the robot node: 
-A terminal splitted in two should be already open. 
-If you click on the upper one and use the up-arrow you should find the following command line:
+A terminal split in two should be already open. 
+If you click on the upper window and press the up-arrow key, you should find and run the following command line:
 
 ```sh 
 roslaunch CORC m1_real_A.launch
@@ -40,53 +44,53 @@ At this point you should see something like:
 ![Screenshot of the terminal after running the robot node.](imgs_readme/terminalRobotNode.png)
 If this is not the case (any red part raise your hand).
 
-Now try to move the robot, it should be quite hard to manuver because no torque are provided by the motor. 
+Now try to move the robot. You should feel a lot of resistance because no torque compensation is provided by the motor. 
 
 ## Test robot transparency 
-At the opening of the node a (rqt-)**GUI** should open (if this is not the case raise your hand). 
+After running the robot node, an (rqt-)**GUI** should also open (if this is not the case raise your hand). 
 The GUI should be similar to this one:
 
 ![Screenshot of the GUI.](imgs_readme/GUI.png)
 
-If you press to the name of your team on the left of the GUI the following interface should open.
+If you click on the name of your team on the left of the GUI, the following interface should open.
 
-At this point press on the scrollable bar in the "Controller mode" and press on transparent mode. 
+At this point, click on the dropdown labeled "Controller mode" and switch to transparent mode. 
 
 ![Screenshot of the GUI.](imgs_readme/transparency.png)
 
-The robot should be much easier to move because the robot controller performs the following:
+The robot should be much easier to move because the controller attempts to minimize the forces read by the interaction force sensor. For more details, the interaction force controller performs the following:
 
-![Robot controller Structure.](TODO)
+![Robot controller Structure.](imgs_readme/control_diagram.png)
 
-For the following task you have to immagine the robot as a joystick that controls a paddle in a boat game.
+For the following tasks, you should think about the robot as a joystick that controls a paddle of virtual boat.
 
 ![Display of the robot game]()
 
 (Organizers run the boat game)
 
-On the GUI you can also visualize the name of the other teams.** Pay attention of not pressing other teams names.**
+On the GUI, you can also visualize the name of the other teams. **Pay attention NOT to click the other team names.**
 
-For the next part of the workshop we will need to visualize what it is happening inside each robot.
-For this reason on the right part of the guy are displayed some plots. 
+For the next part of the activity, we will need to visualize the sensor data and commands streaming from your robot.
+On the right part of the GUI, we display some important plots. 
 
 These plots display:
-- the joint configuration of the robots, 
+- the joint configuration of the robots (i.e., angular position), 
 - the desired interaction torque with the user
 
-For this first task the interaction torque is zero so if you press play you should only see the joint positions of all four robots. 
+For this first task, the desired interaction force is zero. If you press play, you should only see the joint angles of all four robots. 
 
 ![Example plot viscousity]()
 
-## Task 1: Implement water viscousity when paddle enter in contact with water
+## Task 1: Implement water viscousity when paddle contact with water
 
 ![Water Viscousity](imgs_readme/waterviscousity.webp)
 
-For this first task you will need to implement the water viscousity. 
-First of all **bring back the robot controller to zero torque. **
+For this first task, you will need to render non-zero torques on your robot to simulate the feeling of moving a paddle through water. 
+First, **change the robot Controller Mode back to zero_torque.**
 
-There should be Visual Studio open in your screen with the script "**compute_torque.py**" open. 
-In this script there are three function we will implement across the whole workshop. 
-For the first we will concetrate on the first function:
+There should be Visual Studio window on your screen with the script "**compute_torque.py**" open. 
+In this script, there are three function we will implement across the three tasks of the workshop. 
+For the first, we will concetrate on this function:
 
 ```python
 """
@@ -112,26 +116,27 @@ we would like you to implement a viscous force that is designed in this way:
 
 $$\large F = - D_{vis} \dot{\theta} \text{ for } \dot{\theta} \leq 0 \wedge \theta \leq 0 $$
 
-Now save the script and go back on the terminal. 
-In a second terminal (lower one) if you use your up-arrow you should find the following command line:
+Now save the script (```sh ctrl + s```) and go back on the terminal. 
+In a second terminal (bottom one) if you use your up-arrow you should find and run the following command line:
 
 ```sh
 roslaunch multi_robot_interaction multi_m1_real.launch
 ``` 
-
-At this point on the GUI should appear on the left an additional node : "**multi_robot_interaction_$TEAMNAME**". 
-If you don't see press **Refresh**. 
-Pay attention to select your own team name. 
+At this point an additional node should appear on GUI : "**multi_robot_interaction_$TEAMNAME**". 
+If you don't see this on the GUI, press **Refresh**. 
+Again, pay attention to select your own team name. 
 The following interface should open:
 
 ![Screenshot of the GUI.](imgs_readme/GUIMultiplot.png)
 
-Before testing the actual forces on the robot check on the plots the results of that forces:
-**If you implemented the friction correctly you you see some peaks of desired interaction force when you move the robot toward down direction. 
-These peaks should appear only after the robot goes over the middle point ($\large \theta=0$) and their amplitude should be proportional to the velocity you are moving the robot.** 
+### Visualize implemented forces
 
-If All these are true we are ready to test the effect of that force on the robot. 
-Otherwise ```sh ctrl + c``` on the lower terminal and comeback to the code. 
+For safety, before physically testing the actual commanded forces on the robot, check the plots on the right to see what forces you've computed based on the joint configuration of your robot:
+**If you implemented the viscosity correctly, you you see some peaks of desired interaction force when you move the robot downward. 
+These peaks should appear only after the robot passes below the middle point ($\large \theta=0$); the amplitude of the forces should be proportional to the velocity you are moving the robot.** 
+
+If all these are true, we are ready to physically test the result these commanded forces on the robot. 
+Otherwise ```sh ctrl + c``` on the bottom terminal and modify your code in Visual Studio to the code. 
 
 On the GUI select "Task1WaterViscousity(1)" in the "interaction_mode" scroll bar menu. 
 
@@ -153,20 +158,21 @@ Now if you try to move the robot you should perceive water viscousity.
 
 ![Virtual COnnection.](imgs_readme/virtualConnection.webp)
 
-Now that we have an understanding of how each robot works locally and what features it implements let's raise a bit the bar. 
+Now that we have an understanding of how each robot works locally and what features it implements let's raise the bar a bit. 
 
 First of all:
-- **Bring the robot to zero_torque**
-- Close the multi_robot_interaction node by pressing ctrl+c on the lower terminal
+- **Change the robot Controller Mode to zero_torque**
+- Close the multi_robot_interaction node by pressing ```sh ctrl + c``` on the bottom terminal
 
-Comeback to Visual-Studio and let's concentrate on the second function:
+Come back to Visual Studio and let's focus on the second function:
 
 ```python
 """
 Task 2: compute interaction forces due to virtual
-interaction with a second robot
+interaction with a second robot:
 -------------------------------------------------
-....
+The function receives as input, the joint position and velocity of your current robot (posA) and of the robot next to yours (posB, velB), the stiffness and damping of the virtual connection (K_int, D_int).
+The same function returns the interaction force your robot implements (F_A). All values (pos, vel, K, D, F) are single values. K, D positive, pos and vel in radians.  
 """
 def apply_connection_forces_two_robots(K_int , D_int, posA, posB, velA, velB):
     """
@@ -182,51 +188,52 @@ The force should be modeled as a spring-damper system such that the force the ro
 
 $$\large ^BF_A = K(\theta_B - \theta_A) + D(\dot{\theta}_B- \dot{\theta}_A)$$
 
-For this task ask the team next to you their name and their robot will be the one you will interact with (the name is already inside the code you will not need to specify it anyway). 
+**For this task interact with the team next to yours**. Their robot will be the one you will interact with (the name is already inside the code you will not need to specify it). 
 
-Once you implemented the function run the following:
+Once you implemented the function save (in VS: ```sh ctrl + s```) and run the following:
 
 ```sh
 roslaunch multi_robot_interaction multi_m1_real.launch task:=2
 ```
+Each team computes the desired connection forces for their own robot, relative to their neighbor's robot. If only one team implements these forces, we will have a **unidirectional interaction** (i.e., one-way connection); when both teams implement the function, we will have a **bidirectional interaction** (i.e., two-way connection). 
+** If you have to guess, assuming that both of you created the same function in the same way and with the same parameters, what force should your neighbor's robot command (relative to your force commands)?**
 
-Doing that each team implements a interaction force for their robot. So if only one team implement it we will have a **unidirection interaction**, when both teams implement the function we will have a **bilateral interaction**. 
-** If you have to guess (in the hypothesis that both of you created the same function in the same way and with the same parameters) what force should the other robot measures?**
-
-
-First of all, change the interaction_mode in the multi_robot_menu and set as Task2RobotConnection(2).
+Next, change the interaction_mode in the multi_robot_interaction menu to Task2RobotConnection(2).
 
 Now observe the plots, if you press play you should see:
-- if you move your robot far from the other robot configuration the desired interaction force grows. 
-- if the two robot are very close to each other there should be zero interaction torque.
+- if you move your robot far from the other robot configuration, the desired interaction force grows. 
+- if the joint configurations of both robots are very close to one another, there should be near-zero interaction force.
 
-If all these are true we are able to test on the robot otherwise close the node and comeback to VS code. 
+If all these are true, we are able to test on the robot. Otherwise, close the node and come back to the Visual Studio code. 
 
 Move to your robot menu and select interaction_torque_control(4).
 
 ### Now let's play a bit with the parameters of the interaction. 
-- **What happen if you increase or decrese the stiffness?**
-- **What happen if one robot increase the stiffness and the $other robot decrease it? **
-- **When this can be helpfull?**
+- **What happens if you increase or decrease the stiffness?**
+- **What happens if one robot increases the stiffness and the $other robot decreases it? **
+- **In a rehabilitation scenario, when can these different stiffness settings be helpful?**
+
+(Alessia Noccaro)
 
 ## Task 3: Connect more than 2 robots
 
-Now we saw: 
+At this point, we've seen: 
 
 (1) how each robot behaves individually. 
 
-(2) how two robots interact. 
+(2) how two robots can virtually interact. 
 
-Let's try something more challenging: Connecting more than 2 robots.
+Let's try something more challenging: connecting more than 2 robots.
 
 First of all:
-- **Bring the robot to zero_torque**
-- Close the multi_robot_interaction node by pressing **ctrl+c** on the lower terminal
+- **Change the robot Controller Mode to zero_torque**
+- Close the multi_robot_interaction node by pressing ```sh ctrl + c``` on the bottom terminal
 
-Let's suppose that we have the following arrays:
-- Positions of all robots
-- Velocities of all robots
-- Vector describing how the robots are connected
+Go back to Visual Studio and implement the third Task. 
+Let's suppose that we have the following arrays (numpy arrays):
+- Positions of all robots (dim N = number of robots)
+- Velocities of all robots (dim N) 
+- Vector describing how the robots are connected (dim N)
 
 ![Interaction Interface](imgs_readme/task3components.png)
 
@@ -237,12 +244,11 @@ Go back to Visual Studio and implement the third function that implement a conne
 Task 3: compute interaction forces due to virtual
 interaction with N robots
 -------------------------------------------------
-....
 """
 def apply_connection_forces_N_robots(K_int , D_int, pos_v, vel_v, conn_Vector):
     """
-    K_int : stiffness connecting two robots [int]
-    D_int : damping connecting two robots [int]
+    K_int : stiffness connecting two robots [float]
+    D_int : damping connecting two robots [float]
     pos_v : vector of robots positions [N dim np array, where N is the number of robots]
     vel_v : vector of robots velocities [N dim np array]
     conn_Vector : vector (N numpy array) describing the interaction between robots
@@ -270,23 +276,21 @@ On the opening a interactive window should opening with the following graphical 
 ![Interaction Interface]()
 
 This interface allows to associate your robot (on the left) to as many of the other robots present in the room. 
-To connect your robot to another robot just click on the robot you want to connect and drag and drop on the first line at the right of your robot. 
-The position is not important. 
-Doing that we are creating the vector then used in the function you just implemented. 
-To start drag and drop two robot on the right of your robot (better from two teams near to you). 
+To connect your robot to another robot, just click on the robot you want to connect and drag/drop on the first line to the right of your robot name. 
+The order is not important in this case. 
+This creates the boolean connection vector (conn_Vector) used in the function you just implemented. 
+To start, drag and drop two robots on the right of your robot (the other robots of your Boat A or B). 
 
-When u are satisfied of the connection you implemented close the graphical window and go back on the GUI. 
+When you are satisfied with the connection vector you implemented, close the graphical window and go back to the GUI. 
 
-In interaction_mode select "Task3". Let's visualize the results of the connection you implemented. 
+Change the interaction_mode to "Task3". Let's visualize the results of the connection you implemented. 
 
-The plots should display a torque that is proportional to the displacement from the two robots.
-
-- **What happens in the case in which your robot is in the middle of the other two robots ?**
+The plots should display a torque that is proportional to the displacement between the two robots.
 
 If All this is true you are ready to test with the actual robot.
 
-We suggest to lower the stiffness and damping (**why?**)
 Go to the robot menu and select interaction_mode(4). 
 
 Now try to close the multi_robot_interaction node and open again with the same command and try to add additional robots. 
-- What will happen if you connect all 8 of them ? 
+- **What happens in the case in which your robot is in the middle of the other two robots ?**
+- **What is the position of the attractor of the spring-damper when multiple robots are connected?**
