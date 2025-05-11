@@ -50,7 +50,7 @@ Now try to move the robot. You should feel a lot of resistance because no torque
 After running the robot node, an (rqt-)**GUI** should also open (if this is not the case raise your hand). 
 The GUI should be similar to this one:
 
-![Screenshot of the GUI.](imgs_readme/GUI.png)
+![Screenshot of the GUI.](imgs_readme/GUIRobot.png)
 
 If you click on the name of your team on the left of the GUI, the following interface should open.
 
@@ -78,8 +78,6 @@ These plots display:
 - the desired interaction torque with the user
 
 For this first task, the desired interaction force is zero. If you press play, you should only see the joint angles of all four robots. 
-
-![Example plot viscousity]()
 
 ## Task 1: Implement water viscousity when paddle contact with water
 
@@ -127,7 +125,7 @@ If you don't see this on the GUI, press **Refresh**.
 Again, pay attention to select your own team name. 
 The following interface should open:
 
-![Screenshot of the GUI.](imgs_readme/GUIMultiplot.png)
+![Screenshot of the GUI.](imgs_readme/WaterViscosityGUI.png)
 
 ### Visualize implemented forces
 
