@@ -53,7 +53,7 @@ The GUI should be similar to this one:
 
 If you click on the name of your team on the left of the GUI, the following interface should open.
 
-At this point, click on the dropdown labeled "Controller mode" and switch to transparent mode. 
+At this point, click on the dropdown labeled "controller_mode" and switch to **transparency(5)**. 
 
 ![Screenshot of the GUI.](imgs_readme/transparency.png)
 
@@ -80,7 +80,7 @@ For this first task, the desired interaction force is zero. If you press play, y
 ![Water Viscousity](imgs_readme/waterviscousity.webp)
 
 For this first task, you will need to render non-zero torques on your robot to simulate the feeling of moving a paddle through water. 
-First, **change the robot Controller Mode back to zero_torque.**
+First, **change the robot controller_mode back to zero_torque(1).**
 
 There should be Visual Studio window on your screen with the script "**compute_torque.py**" open. 
 In this script, there are three function we will implement across the three tasks of the workshop. 
@@ -140,7 +140,7 @@ On the GUI select "Task1WaterViscousity(1)" in the "interaction_mode" scroll bar
 
 ![Screenshot of the GUI.](imgs_readme/task1.png)
 
-Now come back to your robot menu and select "interaction_torque_controller(4)" in the controller mode. 
+Now come back to your robot menu and select **interaction_torque_control(4)** as the controller_mode. 
 
 ![Screenshot of the GUI.](imgs_readme/PlotGUIIntTorqContr.png)
 
@@ -159,7 +159,7 @@ Now if you try to move the robot you should perceive water viscosity.
 Now that we have an understanding of how each robot works locally and what features it implements let's raise the bar a bit. 
 
 First of all:
-- **Change the robot Controller Mode to zero_torque(1)**
+- **Change the robot controller_mode to zero_torque(1)**
 - Close the multi_robot_interaction node by pressing ```ctrl + c``` on the bottom terminal
 
 Come back to Visual Studio and let's focus on the second function:
