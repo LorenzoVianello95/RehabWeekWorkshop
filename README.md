@@ -1,4 +1,7 @@
 # RehabWeek 2025: WS32 
+
+![Screenshot of the terminal after running the robot node.](imgs_readme/QR.png)
+
 This repo covers an activity to render haptic forces between multi-robot systems in python. 
 This activity is paired with a rehabilitation game, where the velocity of each single-DoF robot moves one of four paddles on a virtual boat.
 
