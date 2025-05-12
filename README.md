@@ -276,11 +276,13 @@ def apply_connection_forces_N_robots(K_int, D_int, pos_v, vel_v, conn_Vector):
 """
 ```
 
-This function should return a sum of the forces exerted from each robot having 0 as vector index on our robot 
+This function should return the scaled sum of the forces, resulting from the connection between your robot and all other robots:
 
-$$\large ^BF_A = \frac{K}{(\sum_i s_i)^2}(\theta_B - \theta_A) + \frac{D}{\sum_i s_i}(\dot{\theta}_B- \dot{\theta}_A)$$
+$$\large ^iF_A = k(\theta_i - \theta_A) + D(\dot{\theta}_i - \dot{\theta}_A)$$
 
-$$\large F = \sum_i s_i ^iF_A  \text{ with } s_i \in \{0, 1\}$$
+$$\large F = \frac{\sum_i s_i F_A}{\sum_i s_i}  \text{ with } s_i \in \{0, 1\}$$
+
+where A represents your own robot, and i is the index of the robot you are connected to.
 
 When the function is ready, save and go back on the terminal and run:
 ```sh
