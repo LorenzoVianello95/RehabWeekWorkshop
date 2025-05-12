@@ -295,7 +295,7 @@ This interface allows to associate your robot (on the left) to as many of the ot
 To connect your robot to another robot, just click on the robot you want to connect and drag/drop on the first line to the right of your robot name (the order is not important). 
 
 This creates the boolean connection vector (conn_Vector) used in the function you just implemented. 
-To start, drag and drop two of robot names to the open spots to right of your robot (two other robots from your Boat, A or B). 
+To start, drag and drop two robot names to the open spots to right of your robot (two other robots from your Boat, A or B). 
 
 When you are satisfied with the connection vector you implemented, close the graphical window and go back to the GUI (this saves the connection vector you've selected). 
 
