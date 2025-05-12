@@ -13,23 +13,22 @@ Most of the computers run on a local network, so if you need to search online we
 
 ## Python Instructions
 
-All the task will be in python, if you are not familiar with python here a list of helpfull commands:
+All of the tasks will involve coding in python. If you are not familiar with python, here is a list of helpful commands:
   ```python
-    # for cycle has the following notation:
-    # where i is an index that goes from 0 to len(v) where len(v) is the dimension of a vector
-    for i in range(0, len(v)): # both for loop and if operator want : at the end and space in the next line
-      if v[i] == N: # if operator, equal operator in python (==), to access element i of vector v[i]
-          L = v[i] # no ; needed
-    # numpy array:
-    v = np.array([1, 2, 4,3])
-    # to have size of single dimension array
-    v.shape[0]
+    # for loops have the following notation:
+    # i is an index that goes from 0 to len(v), where len(v) is the dimension (length) of a vector
+    for i in range(0, len(v)): # for loops and if operators require semi-colons (:) at the end of the line as well as a tab indent in the next line
+      if v[i] == N: # if operator, using an "equals" operator in python (==), to access element i of vector v
+          L = v[i] # no semi-colon (;) needed at the end of line
+
+    v = np.array([1, 2, 4, 3]) # numpy array
+    v.shape[0] # returns the number of elements (length) of single dimension array
   ```
 
 
 ## Start Robot Node 
 
-Understand you team name: 
+Understand your team name: 
 **The team name should be handwritten on the upper part of the screen, this will be the name of your paddle across the whole workshop. 
 IMPORTANT: Don't confuse it with other names.**
 
@@ -42,7 +41,7 @@ roslaunch CORC m1_real_A.launch
 ```
 At this point you should see something like:
 ![Screenshot of the terminal after running the robot node.](imgs_readme/terminalRobotNode.png)
-If this is not the case (any red part raise your hand).
+If this is not the case (any red error messages) raise your hand.
 
 Now try to move the robot. You should feel a lot of resistance because no torque compensation is provided by the motor. 
 
@@ -63,12 +62,9 @@ The robot should be much easier to move because the controller attempts to minim
 ![Robot controller Structure.](imgs_readme/control_diagram.png)
 
 For the following tasks, you should think about the robot as a joystick that controls a paddle of virtual boat.
-
-![Display of the robot game]()
-
 (Organizers run the boat game)
 
-On the GUI, you can also visualize the name of the other teams. **Pay attention NOT to click the other team names.**
+On the GUI, you can also visualize the names of the other teams. **Pay attention NOT to click the other team names.**
 
 For the next part of the activity, we will need to visualize the sensor data and commands streaming from your robot.
 On the right part of the GUI, we display some important plots. 
@@ -79,7 +75,7 @@ These plots display:
 
 For this first task, the desired interaction force is zero. If you press play, you should only see the joint angles of all four robots. 
 
-## Task 1: Implement water viscousity when paddle contact with water
+## Task 1: Implement water viscosity when the paddle contacts the water
 
 ![Water Viscousity](imgs_readme/waterviscousity.webp)
 
@@ -92,22 +88,26 @@ For the first, we will concetrate on this function:
 
 ```python
 """
-Task 1: apply water viscorisity to robot motion
+Task 1: apply water viscosity to robot motion
 -----------------------------------------------
 The viscosity is applied only for negative velocities
 and it's proportional to the current velocity multiplied by a
 damping component
 """
+
 def apply_water_viscosity(D_vis, pos, vel):
     """
-    D_vis: water damping
-    pos: current velocitity
-    vel: current velocity
-    -> returns F: force due to viscosity
+    D_vis: water damping (Nm s/rad)
+    pos: current angular position of your robot (rad)
+    vel: current angular velocity of your robot (rad/s)
+    -> returns F: force (torque) due to viscosity
     """
-    F=0
-    # todo
+    # TODO
+    F = 0.0
+
     return F
+
+"""
 ```
 
 we would like you to implement a viscous force that is designed in this way:
