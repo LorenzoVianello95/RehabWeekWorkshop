@@ -280,7 +280,7 @@ This function should return the scaled sum of the forces, resulting from the con
 
 $$\large ^iF_A = k(\theta_i - \theta_A) + D(\dot{\theta}_i - \dot{\theta}_A)$$
 
-$$\large F = \frac{\sum_i s_i F_A}{\sum_i s_i}  \text{ with } s_i \in \{0, 1\}$$
+$$\large F = \frac{\sum_i s_i ^iF_A}{\sum_i s_i}  \text{  where  } s_i \in \{0, 1\}$$
 
 where A represents your own robot, and i is the index of the robot you are connected to.
 
