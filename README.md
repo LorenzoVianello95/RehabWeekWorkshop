@@ -146,7 +146,7 @@ Now come back to your robot menu and select **interaction_torque_control(4)** as
 
 Now if you try to move the robot you should perceive water viscosity.
 
-### Try to change the damping parameter on the multi_robot_menu. 
+### Try to change the damping parameter (c_underwater_interaction) on the multi_robot_menu. 
 
 ![Screenshot of the GUI.](imgs_readme/ParametersInteraction.png)
 
