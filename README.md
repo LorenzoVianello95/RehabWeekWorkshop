@@ -80,7 +80,7 @@ For this first task, the desired interaction force is zero. If you press play, y
 ![Water Viscousity](imgs_readme/waterviscousity.webp)
 
 For this first task, you will need to render non-zero torques on your robot to simulate the feeling of moving a paddle through water. 
-First, **change the robot controller_mode back to zero_torque(1).**
+First, **change the robot "controller_mode" back to zero_torque(1).**
 
 There should be Visual Studio window on your screen with the script "**compute_torque.py**" open. 
 In this script, there are three function we will implement across the three tasks of the workshop. 
@@ -140,7 +140,7 @@ On the GUI select "Task1WaterViscousity(1)" in the "interaction_mode" scroll bar
 
 ![Screenshot of the GUI.](imgs_readme/task1.png)
 
-Now come back to your robot menu and select **interaction_torque_control(4)** as the controller_mode. 
+Now come back to your robot menu and select **interaction_torque_control(4)** as the "controller_mode". 
 
 ![Screenshot of the GUI.](imgs_readme/PlotGUIIntTorqContr.png)
 
@@ -159,7 +159,7 @@ Now if you try to move the robot you should perceive water viscosity.
 Now that we have an understanding of how each robot works locally and what features it implements let's raise the bar a bit. 
 
 First of all:
-- **Change the robot controller_mode to zero_torque(1)**
+- **Change the robot "controller_mode" to zero_torque(1)**
 - Close the multi_robot_interaction node by pressing ```ctrl + c``` on the bottom terminal
 
 Come back to Visual Studio and let's focus on the second function:
@@ -214,7 +214,7 @@ Now observe the plots, if you press play you should see:
 
 If all these are true, we are able to test on the robot. Otherwise, close the node and come back to the Visual Studio code. 
 
-Move to your robot menu and change the controller_mode to **interaction_torque_control(4)**.
+Move to your robot menu and change the "controller_mode" to **interaction_torque_control(4)**.
 
 ### Now let's play a bit with the parameters of the interaction. 
 - **What happens if you increase or decrease the stiffness?**
@@ -234,7 +234,7 @@ At this point, we've seen:
 Let's try something more challenging: connecting more than 2 robots.
 
 First of all:
-- **Change the robot controller_mode to zero_torque**
+- **Change the robot "controller_mode" to zero_torque**
 - Close the multi_robot_interaction node by pressing ```ctrl + c``` on the bottom terminal
 
 Go back to Visual Studio and implement the final function. 
@@ -303,7 +303,7 @@ The plots should display a torque that is proportional to the displacement betwe
 
 If all of this is true, you are ready to test with the actual robot.
 
-Go to the robot menu and change your controller_mode to **interaction_torque_control(4)**. 
+Go to the robot menu and change your "controller_mode" to **interaction_torque_control(4)**. 
 
 Now close the multi_robot_interaction node and run again with the same command. This time try to add additional robots. 
 - **What happens in the case where your robot is in the middle of the other two robots?**
