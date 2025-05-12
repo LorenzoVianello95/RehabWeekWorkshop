@@ -278,9 +278,9 @@ def apply_connection_forces_N_robots(K_int, D_int, pos_v, vel_v, conn_Vector):
 
 This function should return the scaled sum of the forces, resulting from the connection between your robot and all other robots:
 
-$$\large ^iF_A = k(\theta_i - \theta_A) + D(\dot{\theta}_i - \dot{\theta}_A)$$
+$$\large ^iF_A = K(\theta_i - \theta_A) + D(\dot{\theta}_i - \dot{\theta}_A)$$
 
-$$\large F = \frac{\sum_i s_i ^iF_A}{\sum_i s_i}  \text{  where  } s_i \in \{0, 1\}$$
+$$\large F = \frac{\sum_i s_i (^iF_A)}{\sum_i s_i}  \text{  where  } s_i \in \{0, 1\}$$
 
 where A represents your own robot, and i is the index of the robot you are connected to.
 
