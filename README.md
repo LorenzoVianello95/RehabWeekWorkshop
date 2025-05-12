@@ -221,7 +221,8 @@ Move to your robot menu and change the "controller_mode" to **interaction_torque
 - **What happens if one robot increases the stiffness and the other robot decreases it?**
 - **In a rehabilitation scenario, when can these different stiffness settings be helpful?**
 
-(Alessia Noccaro)
+![Interaction Interface](imgs_readme/Asymmetric1.png)
+![Interaction Interface](imgs_readme/Asymmetric2.png)
 
 ## Task 3: Connect more than 2 robots
 
