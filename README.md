@@ -20,7 +20,7 @@ All of the tasks will involve coding in python. If you are not familiar with pyt
   ```python
     # for loops have the following notation:
     # i is an index that goes from 0 to len(v), where len(v) is the dimension (length) of a vector
-    for i in range(0, len(v)): # for loops and if operators require semi-colons (:) at the end of the line as well as a tab indent in the next line
+    for i in range(0, len(v)): # for loops and if operators require colons (:) at the end of the line as well as a tab indent in the next line
       if v[i] == N: # if operator, using an "equals" operator in python (==), to access element i of vector v
           L = v[i] # no semi-colon (;) needed at the end of line
 
